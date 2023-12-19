@@ -2,17 +2,9 @@ package rw.qtopie.dragonradar;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.location.Location;
 import android.os.Bundle;
-import android.util.Log;
 
-import com.amap.api.location.AMapLocation;
-import com.amap.api.location.AMapLocationClient;
-import com.amap.api.location.AMapLocationClientOption;
-import com.amap.api.location.AMapLocationListener;
 import com.amap.api.maps.AMap;
-import com.amap.api.maps.LocationSource;
 import com.amap.api.maps.MapView;
 import com.amap.api.maps.MapsInitializer;
 import com.amap.api.maps.model.MyLocationStyle;
@@ -20,6 +12,8 @@ import com.amap.api.maps.model.MyLocationStyle;
 
 public class MainActivity extends Activity {
     MapView mMapView = null;
+
+    private static final String TAG = "fcm";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +30,7 @@ public class MainActivity extends Activity {
         MapsInitializer.updatePrivacyAgree(context, true);
 
         AMap aMap = mMapView.getMap();
-
+        
         MyLocationStyle myLocationStyle;
         myLocationStyle = new MyLocationStyle();
         //设置连续定位模式下的定位间隔，只在连续定位模式下生效，单次定位模式下不会生效。单位为毫秒。

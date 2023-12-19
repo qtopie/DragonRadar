@@ -3,6 +3,8 @@
 
     <uses-feature android:name="android.hardware.type.watch" />
 
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
     <!--允许程序打开网络套接字-->
     <uses-permission android:name="android.permission.INTERNET" />
     <!--允许获取粗略位置，若用GPS实现定位小蓝点功能则必选-->
@@ -27,10 +29,11 @@
         android:supportsRtl="true"
         android:theme="@android:style/Theme.DeviceDefault" >
 
+<!--        高德地图Key-->
         <meta-data android:name="com.amap.api.v2.apikey"
             android:value="df95ae2f3d97ab21f0da423e22a43560"/>
 
-        <activity android:name="rw.qtopie.dragonradar.HelloBikeNaviActivity"
+        <activity android:name="rw.qtopie.dragonradar.navi.PredefinedNaviActivity"
             android:screenOrientation="portrait"
             android:exported="true">
             <intent-filter>

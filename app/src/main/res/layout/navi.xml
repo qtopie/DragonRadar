@@ -6,7 +6,30 @@
 
     <com.amap.api.navi.AMapNaviView
         android:id="@+id/naviView"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
+    <com.amap.api.navi.view.NextTurnTipView
+        android:id="@+id/mNextTurnTipView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+    <com.amap.api.navi.view.OverviewButtonView
+        android:id="@+id/myOverviewButtonView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"/>
+
+
+    <com.amap.api.navi.view.DirectionView
+        android:id="@+id/custom_myDirectionView"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:visibility="visible" />
 
 </LinearLayout>
