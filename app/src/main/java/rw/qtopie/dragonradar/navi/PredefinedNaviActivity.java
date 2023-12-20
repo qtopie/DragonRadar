@@ -11,7 +11,6 @@ import com.amap.api.maps.model.LatLng;
 import com.amap.api.maps.model.Poi;
 import com.amap.api.navi.AmapNaviPage;
 import com.amap.api.navi.AmapNaviParams;
-import com.amap.api.navi.AmapNaviTheme;
 import com.amap.api.navi.AmapNaviType;
 import com.amap.api.navi.AmapPageType;
 
@@ -35,13 +34,14 @@ public class PredefinedNaviActivity extends Activity {
 
         Poi start = new Poi("start", s1, "");
         Poi end = new Poi("end", t1, "");
+        start = null;
+        end = null;
 
 // 组件参数配置
-        AmapNaviParams params = new AmapNaviParams(start, null, end, AmapNaviType.DRIVER, AmapPageType.NAVI);
+        AmapNaviParams params = new AmapNaviParams(start, null, end, AmapNaviType.DRIVER, AmapPageType.ROUTE);
         params.setShowVoiceSetings(false);
         params.setShowExitNaviDialog(false);
         params.setUseInnerVoice(false);
-        params.setTheme(AmapNaviTheme.BLACK);
         params.setShowCrossImage(false);
         params.setShowRouteStrategyPreferenceView(false);
         params.setDrawBackUpOverlay(false);

@@ -33,7 +33,7 @@
         <meta-data android:name="com.amap.api.v2.apikey"
             android:value="df95ae2f3d97ab21f0da423e22a43560"/>
 
-        <activity android:name="rw.qtopie.dragonradar.navi.PredefinedNaviActivity"
+        <activity android:name="rw.qtopie.dragonradar.navi.HelloBikeNaviActivity"
             android:screenOrientation="portrait"
             android:exported="true">
             <intent-filter>

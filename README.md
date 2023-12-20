@@ -1,10 +1,15 @@
 # DragonRadar
 
-1. 显示当前定位
+基于高德地图的WearOS导航App.
 
-2. 路线导航
+## 设计
 
-3. 路线概览
+![交互设计图](./docs/dragon-radar-design.svg)
 
+## 功能
 
-https://lbs.amap.com/api/android-navi-sdk/guide/custom-ui/customview
+- [] 基础定位功能
+- [] 路线导航
+- [] 个人帐号,可以存储常用地点和设置
+- [] 手机端推送起始地点和目的地,直接开始导航
+
