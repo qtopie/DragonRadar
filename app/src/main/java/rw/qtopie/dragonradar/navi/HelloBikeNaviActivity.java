@@ -1,18 +1,18 @@
 package rw.qtopie.dragonradar.navi;
 
+import static rw.qtopie.dragonradar.navi.DragonRouteActivity.DEBUG_TAG;
+
 import android.os.Bundle;
+import android.util.Log;
+import android.view.MotionEvent;
 
 import androidx.annotation.Nullable;
 
-import com.amap.api.maps.model.LatLng;
 import com.amap.api.navi.AMapNaviViewOptions;
 import com.amap.api.navi.enums.AMapNaviViewShowMode;
-import com.amap.api.navi.enums.NaviType;
-import com.amap.api.navi.enums.TravelStrategy;
 import com.amap.api.navi.model.AMapCalcRouteResult;
 import com.amap.api.navi.model.AMapLaneInfo;
 import com.amap.api.navi.model.NaviInfo;
-import com.amap.api.navi.model.NaviPoi;
 import com.amap.api.navi.view.DirectionView;
 import com.amap.api.navi.view.NextTurnTipView;
 
@@ -48,6 +48,29 @@ public class HelloBikeNaviActivity extends BaseNaviActivity {
     }
 
     @Override
+    public boolean onTouchEvent(MotionEvent event){
+        switch(event.getAction()) {
+            case (MotionEvent.ACTION_DOWN) :
+                Log.d(DEBUG_TAG,"Action was DOWN");
+                return true;
+            case (MotionEvent.ACTION_MOVE) :
+                Log.d(DEBUG_TAG,"Action was MOVE");
+                return true;
+            case (MotionEvent.ACTION_UP) :
+                Log.d(DEBUG_TAG,"Action was UP");
+                return true;
+            case (MotionEvent.ACTION_CANCEL) :
+                Log.d(DEBUG_TAG,"Action was CANCEL");
+                return true;
+            case (MotionEvent.ACTION_OUTSIDE) :
+                Log.d(DEBUG_TAG,"Movement occurred outside bounds of current screen element");
+                return true;
+            default :
+                return super.onTouchEvent(event);
+        }
+    }
+
+    @Override
     protected void onDestroy() {
         super.onDestroy();
         //在activity执行onDestroy时执行mMapView.onDestroy()，销毁地图
@@ -61,7 +84,7 @@ public class HelloBikeNaviActivity extends BaseNaviActivity {
     public void onCalculateRouteSuccess(AMapCalcRouteResult aMapCalcRouteResult) {
         super.onCalculateRouteSuccess(aMapCalcRouteResult);
 
-        mAMapNavi.startNavi(NaviType.GPS);
+//        mAMapNavi.startNavi(NaviType.GPS);
 
     }
 
@@ -195,16 +218,16 @@ public class HelloBikeNaviActivity extends BaseNaviActivity {
 
     @Override
     public void onInitNaviSuccess() {
-        LatLng start = new LatLng(sList.get(0).getLatitude(), sList.get(0).getLongitude());
-
-        LatLng end = new LatLng(eList.get(0).getLatitude(), eList.get(0).getLongitude());
-
-        // 构造起点POI
-        NaviPoi fromPoi = new NaviPoi("起点", start, "");
-        // 构造终点POI
-        NaviPoi toPoi = new NaviPoi("终点", end, "");
-
-        mAMapNavi.calculateRideRoute(fromPoi, toPoi, TravelStrategy.SINGLE);
+//        LatLng start = new LatLng(sList.get(0).getLatitude(), sList.get(0).getLongitude());
+//
+//        LatLng end = new LatLng(eList.get(0).getLatitude(), eList.get(0).getLongitude());
+//
+//        // 构造起点POI
+//        NaviPoi fromPoi = new NaviPoi("起点", start, "");
+//        // 构造终点POI
+//        NaviPoi toPoi = new NaviPoi("终点", end, "");
+//
+//        mAMapNavi.calculateRideRoute(fromPoi, toPoi, TravelStrategy.SINGLE);
     }
 
 }

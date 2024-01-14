@@ -33,8 +33,9 @@
         <meta-data android:name="com.amap.api.v2.apikey"
             android:value="df95ae2f3d97ab21f0da423e22a43560"/>
 
-        <activity android:name="rw.qtopie.dragonradar.navi.HelloBikeNaviActivity"
+        <activity android:name="rw.qtopie.dragonradar.navi.PredefinedNaviActivity"
             android:screenOrientation="portrait"
+            android:theme="@style/WearAppTheme"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -43,8 +44,13 @@
         </activity>
 
         <activity
-            android:name="com.amap.api.navi.AmapRouteActivity"
-            android:theme="@android:style/Theme.NoTitleBar"
+            android:name="rw.qtopie.dragonradar.navi.DragonRouteActivity"
+            android:theme="@style/WearAppTheme"
+            android:configChanges="orientation|keyboardHidden|screenSize|navigation" />
+
+        <activity
+            android:name="rw.qtopie.dragonradar.navi.HelloBikeNaviActivity"
+            android:theme="@style/WearAppTheme"
             android:configChanges="orientation|keyboardHidden|screenSize|navigation" />
 
         <service android:name="com.amap.api.location.APSService" />
