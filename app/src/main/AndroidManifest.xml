@@ -6,6 +6,9 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_LOCATION"/>
+    <uses-permission android:name="Manifest.permission.POST_NOTIFICATIONS"/>
 
     <!--允许程序打开网络套接字-->
     <uses-permission android:name="android.permission.INTERNET" />
@@ -57,6 +60,12 @@
             android:configChanges="orientation|keyboardHidden|screenSize|navigation" />
 
         <service android:name="com.amap.api.location.APSService" />
+
+        <service
+            android:name=".navi.DragonRadarNaviService"
+            android:foregroundServiceType="location"
+            android:exported="false">
+        </service>
 
     </application>
 

@@ -2,12 +2,17 @@ package rw.qtopie.dragonradar.navi;
 
 import static rw.qtopie.dragonradar.navi.DragonRouteActivity.DEBUG_TAG;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.app.Service;
 import android.content.Intent;
+import android.content.pm.ServiceInfo;
 import android.os.IBinder;
 import android.util.Log;
 
 import androidx.annotation.Nullable;
+import androidx.core.app.NotificationCompat;
 
 import com.amap.api.maps.AMapException;
 import com.amap.api.navi.AMapNavi;
@@ -29,6 +34,7 @@ import com.amap.api.navi.model.NaviInfo;
 
 public class DragonRadarNaviService extends Service implements AMapNaviListener, ParallelRoadListener {
 
+    public static final String NAVIGATION_SERVICE_NOTIFICATION_ID = "navigation_channel_id";
     private AMapNavi mAMapNavi;
 
     @Override
@@ -56,10 +62,24 @@ public class DragonRadarNaviService extends Service implements AMapNaviListener,
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         // The service is starting, due to a call to startService()
-//        return startMode;
+       startForeground();
         return Service.START_STICKY_COMPATIBILITY;
     }
 
+    private void startForeground() {
+        NotificationChannel channel = new NotificationChannel(NAVIGATION_SERVICE_NOTIFICATION_ID, "Dragon Radar is running", NotificationManager.IMPORTANCE_DEFAULT);
+        channel.setDescription("Dragon Radar is running for navigating");
+
+        NotificationManager nm = (NotificationManager) getSystemService(NotificationManager.class);
+        nm.createNotificationChannel(channel);
+
+        Notification notification =
+                new NotificationCompat.Builder(this.getApplicationContext(), NAVIGATION_SERVICE_NOTIFICATION_ID)
+                        .setOngoing(true)
+                        .build();
+        int type = ServiceInfo.FOREGROUND_SERVICE_TYPE_LOCATION;
+        startForeground(100, notification, type);
+    }
 
 
     @Override

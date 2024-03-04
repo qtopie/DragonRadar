@@ -1,9 +1,13 @@
 package rw.qtopie.dragonradar.navi;
 
+import android.app.Notification;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ServiceInfo;
 import android.os.Bundle;
 import android.util.Log;
+
+import androidx.core.app.NotificationCompat;
 
 import com.amap.api.navi.AmapRouteActivity;
 
@@ -28,7 +32,7 @@ public class DragonRouteActivity extends AmapRouteActivity {
         Log.d(DEBUG_TAG, "back button pressed");
 
         if (naviStarted) {
-            startService(naviService);
+            startForegroundService(naviService);
             startActivity(bikeIntent);
         }
     }
