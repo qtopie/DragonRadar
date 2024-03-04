@@ -3,8 +3,6 @@ package rw.qtopie.dragonradar.navi;
 import android.os.Bundle;
 
 import com.amap.api.navi.AMapNaviViewOptions;
-import com.amap.api.navi.enums.NaviType;
-import com.amap.api.navi.model.AMapCalcRouteResult;
 import com.amap.api.navi.view.NextTurnTipView;
 
 import rw.qtopie.dragonradar.R;
@@ -19,7 +17,6 @@ public class BasicWalkNaviActivity extends BaseNaviActivity {
         setContentView(R.layout.navi);
         mAMapNaviView = findViewById(R.id.naviView);
         AMapNaviViewOptions options = mAMapNaviView.getViewOptions();
-//        options.setNaviArrowVisible(false);
         options.setSecondActionVisible(false);
         options.setAutoDisplayOverview(false);
         options.setModeCrossDisplayShow(false);
@@ -35,15 +32,14 @@ public class BasicWalkNaviActivity extends BaseNaviActivity {
     }
 
 
-    @Override
-    public void onInitNaviSuccess() {
-        mAMapNavi.calculateWalkRoute(sList.get(0), eList.get(0));
-    }
-
-    @Override
-    public void onCalculateRouteSuccess(AMapCalcRouteResult aMapCalcRouteResult) {
-        super.onCalculateRouteSuccess(aMapCalcRouteResult);
-
-        mAMapNavi.startNavi(NaviType.GPS);
-    }
+//    @Override
+//    public void onInitNaviSuccess() {
+////        mAMapNavi.calculateWalkRoute(sList.get(0), eList.get(0));
+//    }
+//
+//    @Override
+//    public void onCalculateRouteSuccess(AMapCalcRouteResult aMapCalcRouteResult) {
+//
+////        mAMapNavi.startNavi(NaviType.GPS);
+//    }
 }
