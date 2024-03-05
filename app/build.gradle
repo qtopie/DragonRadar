@@ -41,3 +41,9 @@ dependencies {
 
     implementation "androidx.wear:wear-input:1.1.0"
 }
+
+task generateVersionTxt {
+    doLast {
+        file("./version.txt").text = android.defaultConfig.versionName
+    }
+}

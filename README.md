@@ -4,7 +4,7 @@
 
 ## 设计
 
-![交互设计图](./docs/dragon-radar-design.svg)
+![交互设计图](./docs/dragon-radar-design.png)
 
 ## 功能
 
