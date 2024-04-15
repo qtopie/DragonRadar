@@ -63,7 +63,7 @@ public class DragonRadarNaviService extends Service implements AMapNaviListener,
     public int onStartCommand(Intent intent, int flags, int startId) {
         // The service is starting, due to a call to startService()
        startForeground();
-        return Service.START_STICKY_COMPATIBILITY;
+       return Service.START_STICKY_COMPATIBILITY;
     }
 
     private void startForeground() {

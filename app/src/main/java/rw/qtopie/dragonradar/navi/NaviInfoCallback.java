@@ -55,7 +55,6 @@ public class NaviInfoCallback implements INaviInfoCallback {
 
     @Override
     public void onCalculateRouteFailure(int i) {
-
     }
 
     @Override
@@ -65,7 +64,7 @@ public class NaviInfoCallback implements INaviInfoCallback {
 
     @Override
     public void onReCalculateRoute(int i) {
-
+        this.vibrator.vibrate(VibrationEffect.createOneShot(50, VibrationEffect.DEFAULT_AMPLITUDE));
     }
 
     @Override

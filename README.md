@@ -2,6 +2,10 @@
 
 基于高德地图的WearOS导航App.
 
+![DragonRadar](./docs/play_store_512.png)
+
+
+
 ## 设计
 
 ![交互设计图](./docs/dragon-radar-design.png)
