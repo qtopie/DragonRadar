@@ -3,13 +3,11 @@
 
     <uses-feature android:name="android.hardware.type.watch" />
 
-    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <uses-permission android:name="android.permission.VIBRATE"/>
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_LOCATION"/>
-    <uses-permission android:name="Manifest.permission.POST_NOTIFICATIONS"/>
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
 
     <!--允许程序打开网络套接字-->
     <uses-permission android:name="android.permission.INTERNET" />
@@ -24,8 +22,6 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <!--允许获取wifi状态改变，用于网络定位，若无gps但仍需实现定位小蓝点功能则此权限必选-->
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
-    <!--允许程序设置内置sd卡的写权限-->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
 
     <application
@@ -35,6 +31,9 @@
         android:supportsRtl="true"
         android:theme="@android:style/Theme.DeviceDefault" >
 
+        <meta-data
+            android:name="com.google.android.wearable.standalone"
+            android:value="true" />
 <!--        高德地图Key-->
         <meta-data android:name="com.amap.api.v2.apikey"
             android:value="df95ae2f3d97ab21f0da423e22a43560"/>
@@ -64,6 +63,7 @@
 
         <service
             android:name=".navi.DragonRadarNaviService"
+            android:enabled="true"
             android:foregroundServiceType="location"
             android:exported="false">
         </service>
