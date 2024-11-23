@@ -5,18 +5,57 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Window;
 
+import com.amap.api.navi.AMapNavi;
 import com.amap.api.navi.AMapNaviView;
 import com.amap.api.navi.AMapNaviViewListener;
+import com.amap.api.navi.AMapNaviViewOptions;
+import com.amap.api.navi.model.NaviLatLng;
+import com.google.common.collect.Lists;
+
+import java.util.List;
+
+import rw.qtopie.dragonradar.R;
 
 
-public class BaseNaviActivity extends Activity implements  AMapNaviViewListener {
+public abstract class BaseNaviActivity extends Activity implements AMapNaviViewListener {
 
     protected AMapNaviView mAMapNaviView;
+    protected AMapNavi mAMapNavi;
+
+    protected NaviLatLng mEndLatlng = new NaviLatLng(40.084894, 116.603039);
+    protected NaviLatLng mStartLatlng = new NaviLatLng(39.825934, 116.342972);
+    NaviLatLng p1 = new NaviLatLng(22.525628, 113.924875);//南山地铁站
+    protected final List<NaviLatLng> sList = Lists.newArrayList();
+    protected final List<NaviLatLng> eList = Lists.newArrayList();
+    protected List<NaviLatLng> mWayPointList = Lists.newArrayList();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
+
+        setContentView(R.layout.navi);
+        mAMapNaviView = findViewById(R.id.naviView);
+
+        // 设置layout visible=false加上自己的控件就可以定制UI
+        AMapNaviViewOptions options = mAMapNaviView.getViewOptions();
+        options.setLayoutVisible(false);
+        options.setAutoDrawRoute(true);
+        options.setAfterRouteAutoGray(true);
+        options.setNaviArrowVisible(true);
+        options.setLaneInfoShow(true);
+        options.setAutoLockCar(true);
+        options.setSensorEnable(true);
+        options.setAutoDisplayOverview(false);
+        mAMapNaviView.setViewOptions(options);
+
+        mAMapNaviView.onCreate(savedInstanceState);
+        mAMapNaviView.setNaviMode(AMapNaviView.NORTH_UP_MODE);
+        mAMapNaviView.setTrafficLightsVisible(true);
+        mAMapNaviView.setAMapNaviViewListener(this);
+
+        sList.add(mStartLatlng);
+        eList.add(mEndLatlng);
     }
 
     @Override
@@ -39,11 +78,7 @@ public class BaseNaviActivity extends Activity implements  AMapNaviViewListener 
     protected void onDestroy() {
         super.onDestroy();
         mAMapNaviView.onDestroy();
-
     }
-
-
-
 
 
     @Override
@@ -53,7 +88,6 @@ public class BaseNaviActivity extends Activity implements  AMapNaviViewListener 
 
     @Override
     public void onNaviMapMode(int naviMode) {
-        //导航态车头模式，0:车头朝上状态；1:正北朝上模式。
     }
 
     @Override
@@ -103,6 +137,5 @@ public class BaseNaviActivity extends Activity implements  AMapNaviViewListener 
     public boolean onNaviBackClick() {
         return false;
     }
-
 
 }

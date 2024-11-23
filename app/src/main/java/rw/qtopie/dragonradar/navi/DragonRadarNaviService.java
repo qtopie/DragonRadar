@@ -2,7 +2,6 @@ package rw.qtopie.dragonradar.navi;
 
 import static rw.qtopie.dragonradar.navi.DragonRouteActivity.DEBUG_TAG;
 
-import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -20,8 +19,6 @@ import androidx.wear.ongoing.Status;
 import com.amap.api.maps.AMapException;
 import com.amap.api.navi.AMapNavi;
 import com.amap.api.navi.AMapNaviListener;
-import com.amap.api.navi.ParallelRoadListener;
-import com.amap.api.navi.enums.AMapNaviParallelRoadStatus;
 import com.amap.api.navi.model.AMapCalcRouteResult;
 import com.amap.api.navi.model.AMapLaneInfo;
 import com.amap.api.navi.model.AMapModelCross;
@@ -35,10 +32,9 @@ import com.amap.api.navi.model.AimLessModeCongestionInfo;
 import com.amap.api.navi.model.AimLessModeStat;
 import com.amap.api.navi.model.NaviInfo;
 
-import rw.qtopie.dragonradar.MainActivity;
 import rw.qtopie.dragonradar.R;
 
-public class DragonRadarNaviService extends Service implements AMapNaviListener, ParallelRoadListener {
+public class DragonRadarNaviService extends Service implements AMapNaviListener {
 
     public static final String NOTIFICATION_CHANNEL_ID = "riding_navi_channel_01";
     private static final int NOTIFICATION_ID = 330704;
@@ -52,9 +48,12 @@ public class DragonRadarNaviService extends Service implements AMapNaviListener,
         try {
             mAMapNavi = AMapNavi.getInstance(getApplicationContext());
 
+            // 暂时不启用播报
+            mAMapNavi.setUseInnerVoice(false, false);
+
+            //设置模拟导航的行车速度
+            mAMapNavi.setEmulatorNaviSpeed(25);
             mAMapNavi.addAMapNaviListener(this);
-            mAMapNavi.addParallelRoadListener(this);
-            mAMapNavi.setUseInnerVoice(true, true);
         } catch (AMapException e) {
             throw new RuntimeException(e);
         }
@@ -338,8 +337,4 @@ public class DragonRadarNaviService extends Service implements AMapNaviListener,
 
     }
 
-    @Override
-    public void notifyParallelRoad(AMapNaviParallelRoadStatus aMapNaviParallelRoadStatus) {
-
-    }
 }

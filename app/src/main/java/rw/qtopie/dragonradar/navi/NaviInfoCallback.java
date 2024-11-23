@@ -35,7 +35,7 @@ public class NaviInfoCallback implements INaviInfoCallback {
 
     @Override
     public void onLocationChange(AMapNaviLocation aMapNaviLocation) {
-
+        // TODO 如果长时间没有更新5min,则自动关闭服务, 降低电池消耗
     }
 
     @Override
