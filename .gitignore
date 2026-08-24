@@ -15,3 +15,6 @@
 local.properties
 .idea/
 app/version.txt
+
+# Agent Dynamic Task Board
+.agents/TASK.md
