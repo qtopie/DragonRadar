@@ -10,6 +10,10 @@ import rw.qtopie.dragonradar.R
 
 class HelloBikeNaviActivity : BaseNaviActivity() {
 
+    companion object {
+        const val DEBUG_TAG = "dragon-radar-hello-bike"
+    }
+
     private var textNextRoadDistance: TextView? = null // 下个路口距离
     private var nextTurnTipView: NextTurnTipView? = null
 

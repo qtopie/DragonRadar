@@ -32,6 +32,7 @@ import rw.qtopie.dragonradar.R
 class DragonRadarNaviService : Service(), AMapNaviListener {
 
     companion object {
+        const val DEBUG_TAG = "dragonradar"
         const val NOTIFICATION_CHANNEL_ID = "riding_navi_channel_01"
         private const val NOTIFICATION_ID = 330704
     }

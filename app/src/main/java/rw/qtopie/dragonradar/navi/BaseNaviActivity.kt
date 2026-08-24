@@ -9,9 +9,7 @@ import com.amap.api.navi.AMapNaviView
 import com.amap.api.navi.AMapNaviViewListener
 import com.amap.api.navi.AMapNaviViewOptions
 import com.amap.api.navi.model.NaviLatLng
-import com.google.common.collect.Lists
 import rw.qtopie.dragonradar.R
-import java.util.List
 
 abstract class BaseNaviActivity : Activity(), AMapNaviViewListener {
 
@@ -21,9 +19,9 @@ abstract class BaseNaviActivity : Activity(), AMapNaviViewListener {
     protected var mEndLatlng: NaviLatLng = NaviLatLng(40.084894, 116.603039)
     protected var mStartLatlng: NaviLatLng = NaviLatLng(39.825934, 116.342972)
     var p1: NaviLatLng = NaviLatLng(22.525628, 113.924875) // 南山地铁站
-    protected val sList: List<NaviLatLng> = Lists.newArrayList()
-    protected val eList: List<NaviLatLng> = Lists.newArrayList()
-    protected var mWayPointList: List<NaviLatLng> = Lists.newArrayList()
+    protected val sList: MutableList<NaviLatLng> = mutableListOf()
+    protected val eList: MutableList<NaviLatLng> = mutableListOf()
+    protected var mWayPointList: MutableList<NaviLatLng> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
