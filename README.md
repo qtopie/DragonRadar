@@ -4,7 +4,11 @@
 
 ![DragonRadar](./docs/play_store_512.png)
 
+> **说明**：出于安全与版权保护考虑，本仓库仅开源了早期版本。新版本在 UI 交互设计与服务体验上进行了核心优化，目前尚未公开。公开的早期版本源码请参考 [`main` 分支](https://github.com/qtopie/DragonRadar/tree/main)。
 
+## 源码
+
+公开的早期版本源码位于 [`main` 分支](https://github.com/qtopie/DragonRadar/tree/main)。
 
 ## 设计
 
