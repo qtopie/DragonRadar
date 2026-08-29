@@ -11,7 +11,7 @@
 公开的早期版本源码位于 [`main` 分支](https://github.com/qtopie/DragonRadar/tree/main)。
 
 ## 设计【仅作参考】
-
+> 新版本已大幅优化重构，并尽可能使用了Jetpack Compose UI
 ![旧版本交互设计图](./docs/dragon-radar-design.png)
 
 ## 功能
